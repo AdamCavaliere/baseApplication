@@ -13,7 +13,7 @@ resource "azurerm_network_interface" "netint" {
   count               = "${var.servercount}"
 
   ip_configuration {
-    name                          = "ipconfig-${count.index + 1}"
+    name                          = "ipconfig-${var.app_name}-${count.index + 1}"
     subnet_id                     = "${data.terraform_remote_state.baseNetwork.ProdApp_subnet}"
     private_ip_address_allocation = "dynamic"
   }
